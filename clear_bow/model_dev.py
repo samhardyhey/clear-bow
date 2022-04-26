@@ -6,7 +6,9 @@ import pandas as pd
 logging.basicConfig(level=logging.INFO)
 
 
-def get_multi_class_dict_preds(data_split, artefact_dir, text_col, label_col, split_type="test", save=True):
+def get_multi_class_dict_preds(
+    data_split, artefact_dir, text_col, label_col, split_type="test", save=True
+):
     assert split_type in ["dev", "test"], "Split type must be either dev/test"
     file_name = "dev_preds" if split_type == "dev" else "test_preds"
 
@@ -34,7 +36,9 @@ def get_multi_class_dict_preds(data_split, artefact_dir, text_col, label_col, sp
     return preds
 
 
-def get_multi_label_dict_preds(data_split, artefact_dir, text_col, label_cols, split_type="test", save=True):
+def get_multi_label_dict_preds(
+    data_split, artefact_dir, text_col, label_cols, split_type="test", save=True
+):
     assert split_type in ["dev", "test"], "Split type must be either dev/test"
     file_name = "dev_preds" if split_type == "dev" else "test_preds"
 
@@ -49,7 +53,9 @@ def get_multi_label_dict_preds(data_split, artefact_dir, text_col, label_cols, s
     y_pred = classifier.predict_batch(x)
 
     # format preds df
-    preds = pd.DataFrame({text_col: data_split[text_col], "y_true": y_true, "y_pred": y_pred})
+    preds = pd.DataFrame(
+        {text_col: data_split[text_col], "y_true": y_true, "y_pred": y_pred}
+    )
 
     if save:
         preds.to_csv(artefact_dir / f"{file_name}.csv", index=False)

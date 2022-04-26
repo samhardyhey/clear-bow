@@ -6,7 +6,9 @@ from srsly import read_json, write_json
 
 
 class DictionaryClassifier:
-    def __init__(self, model_path=None, classifier_type="multi_class", label_dictionaries=None):
+    def __init__(
+        self, model_path=None, classifier_type="multi_class", label_dictionaries=None
+    ):
         # alwyas use Path boject
         model_path = Path(model_path) if model_path else None
         self.round_value = 4
@@ -14,7 +16,9 @@ class DictionaryClassifier:
         # init with default values, otherwise, use serialised values
         self.classifier_type = classifier_type or None
         self.label_dictionaries = (
-            {k: list(set(v)) for k, v in label_dictionaries.items()} if label_dictionaries else None
+            {k: list(set(v)) for k, v in label_dictionaries.items()}
+            if label_dictionaries
+            else None
         )
 
     def _format_predict_dict(self, pred_dict):
@@ -29,10 +33,14 @@ class DictionaryClassifier:
             return prob_dict
 
         elif self.classifier_type == "multi_class":
-            return dict(zip(pred_dict.keys(), self._softmax_array(list(pred_dict.values()))))
+            return dict(
+                zip(pred_dict.keys(), self._softmax_array(list(pred_dict.values())))
+            )
 
         elif self.classifier_type == "multi_label":
-            return dict(zip(pred_dict.keys(), self._sigmoid_array(list(pred_dict.values()))))
+            return dict(
+                zip(pred_dict.keys(), self._sigmoid_array(list(pred_dict.values())))
+            )
 
     def _sigmoid_array(self, x):
         return [1 / (1 + math.exp(-e)) for e in x]
@@ -60,7 +68,9 @@ class DictionaryClassifier:
         if not model_path.exists():
             model_path.mkdir(parents=True, exist_ok=True)
 
-        write_json(model_path / "config.json", {"classifier_type": self.classifier_type})
+        write_json(
+            model_path / "config.json", {"classifier_type": self.classifier_type}
+        )
         write_json(model_path / "label_dictionaries.json", self.label_dictionaries)
 
     def predict_single(self, text, round_preds=True):

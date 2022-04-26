@@ -11,7 +11,9 @@ def test_multi_class_dictionary_classifier(label_dictionaries, text):
 
 
 def test_multi_label_dictionary_classifier(label_dictionaries, text):
-    dc = DictionaryClassifier(classifier_type="multi_label", label_dictionaries=label_dictionaries)
+    dc = DictionaryClassifier(
+        classifier_type="multi_label", label_dictionaries=label_dictionaries
+    )
     res = dc.predict_single(text)
 
     assert set(res.keys()) == set(label_dictionaries.keys())
@@ -22,7 +24,9 @@ def test_multi_label_dictionary_classifier(label_dictionaries, text):
 
 
 def test_multi_label_dictionary_classifier_no_label(wrong_label_dictionaries, text):
-    dc = DictionaryClassifier(classifier_type="multi_label", label_dictionaries=wrong_label_dictionaries)
+    dc = DictionaryClassifier(
+        classifier_type="multi_label", label_dictionaries=wrong_label_dictionaries
+    )
     res = dc.predict_single(text)
     key_set = set(wrong_label_dictionaries.keys())
     key_set.add("no_label")
