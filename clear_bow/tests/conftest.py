@@ -2,32 +2,44 @@ import pytest
 
 
 @pytest.fixture(scope="session")
-def label_dictionaries():
+def example_docs():
+    return [
+        "I'm not a Financial expert but Australian super are one of the bigger better options I guess",
+        "Mate you get 15% tax on concessional contributions in super.\n\nSo no surprise it adds up to over 15%.",
+        "Is the 'income' figure for this before or after tax?",
+        "Message from Covid 19: “don't touch your face, don't touch your super”",
+        "It would be better than having an imaginary jetski that I can't use after the lockdown",
+        "Not really unless you will retire fairly soon",
+        "That's some other government's problem.",
+        "Sun Super all the way",
+        "Message from Covid 19: “don't touch your face, don't touch your super”",
+        "And before Asic politely reminded them they cannot provide financial advice",
+        "Personal insurance and health insurance cover different things too.",
+        "If you need a house, you need a house. I would suggest trying to top it back up when you can.",
+        "Taxes are not fees. They are a federal government tax.",
+        "No but considering moving I'm with unisuper at the moment their a closed fund",
+    ]
+
+
+@pytest.fixture(scope="session")
+def example_doc():
+    return "I'm not a Financial expert but Australian super are one of the bigger better options I guess"
+
+
+@pytest.fixture(scope="session")
+def super_dictionary():
     return {
-        "label_a": [
-            "4wd",
-            "beach",
-            "country",
-            "nature",
-            "offroad",
-            "winter",
-            "terrain",
-            "disconnect",
-            "adventure",
-            "vehicle",
-        ],
-        "label_b": ["cost", "pricey", "price", "consumer", "reverse", "value"],
+        "regulation": ["asic", "government", "federal", "tax"],
+        "contribution": ["contribution", "concession", "personal", "after tax", "10%", "10.5%"],
+        "covid": ["covid", "lockdown", "downturn", "effect"],
+        "retirement": ["retire", "house", "annuity", "age"],
+        "fund": ["unisuper", "aus super", "australian super", "sun super", "qsuper", "rest", "cbus"],
     }
 
 
 @pytest.fixture(scope="session")
-def wrong_label_dictionaries():
+def not_super_dictionary():
     return {
-        "label_a": ["kitchen", "bathroom"],
-        "label_b": ["ocean", "moon"],
+        "topically_irrelevant": ["kitchen", "bathroom"],
+        "not_in_the_dataset": ["ocean", "moon", "weeeeeeee"],
     }
-
-
-@pytest.fixture(scope="session")
-def text():
-    return """Jeep's product range consists solely of sport utility vehicles – both crossovers and fully off-road worthy SUVs and models, including one pickup truck. Previously, Jeep's range included other pick-ups, as well as small vans, and a few roadsters. Some of Jeep's vehicles—such as the Grand Cherokee—reach into the luxury SUV segment, a market segment the 1963 Wagoneer is considered to have started.[5] Jeep sold 1.4 million SUVs globally in 2016, up from 500,000 in 2008,[6][7] two-thirds of which in North America,[8] and was Fiat-Chrysler's best selling brand in the U.S. during the first half of 2017.[9] In the U.S. alone, over 2400 dealerships hold franchise rights to sell Jeep-branded vehicles, and if Jeep were spun off into a separate company, it is estimated to be worth between $22 and $33.5 billion—slightly more than all of FCA (US).[8][7]"""
