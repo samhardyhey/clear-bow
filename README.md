@@ -40,3 +40,25 @@ dc.predict_single("A 10% contribution is not enough for a well balanced super fu
 ```
 
 See tests for additional usage.
+
+### Tests
+Simple pytesting via:
+```sh
+pytest
+```
+
+Multi-venv tox testing via:
+```sh
+tox
+```
+
+### Dist
+- Update version within `setup.py`
+- Create dist `.whl` and `.tar` archives via:
+```py
+python setup.py sdist bdist_wheel
+```
+Push to main pypi repo via:
+```py
+twine upload dist/*
+```
