@@ -30,10 +30,25 @@ def example_doc():
 def super_dictionary():
     return {
         "regulation": ["asic", "government", "federal", "tax"],
-        "contribution": ["contribution", "concession", "personal", "after tax", "10%", "10.5%"],
+        "contribution": [
+            "contribution",
+            "concession",
+            "personal",
+            "after tax",
+            "10%",
+            "10.5%",
+        ],
         "covid": ["covid", "lockdown", "downturn", "effect"],
         "retirement": ["retire", "house", "annuity", "age"],
-        "fund": ["unisuper", "aus super", "australian super", "sun super", "qsuper", "rest", "cbus"],
+        "fund": [
+            "unisuper",
+            "aus super",
+            "australian super",
+            "sun super",
+            "qsuper",
+            "rest",
+            "cbus",
+        ],
     }
 
 

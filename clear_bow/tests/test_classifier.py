@@ -21,7 +21,9 @@ def test_multi_class_batch_simple(super_dictionary, example_docs):
 
 
 def test_multi_label_single_simple(super_dictionary, example_doc):
-    dc = DictionaryClassifier(classifier_type="multi_label", label_dictionary=super_dictionary)
+    dc = DictionaryClassifier(
+        classifier_type="multi_label", label_dictionary=super_dictionary
+    )
     pred = dc.predict_single(example_doc)
 
     assert set(pred.keys()) == set(super_dictionary.keys())
@@ -32,7 +34,9 @@ def test_multi_label_single_simple(super_dictionary, example_doc):
 
 
 def test_multi_label_batch_simple(super_dictionary, example_docs):
-    dc = DictionaryClassifier(classifier_type="multi_label", label_dictionary=super_dictionary)
+    dc = DictionaryClassifier(
+        classifier_type="multi_label", label_dictionary=super_dictionary
+    )
     preds = dc.predict_batch(example_docs)
 
     for pred in preds:

@@ -1,8 +1,8 @@
 ## Clear BOW
-### 1.0 Overview
-A cheap model that takes a formatted dictionary as input, and pushes word occurence counts through either a softmax (multi-class) or sigmoid (multi-label) function, to produce label "probabilities". Not nuanced. Not complex. But if you're using a dictionary you probably don't care about those things. Useful for bootstrapping classifications with raw terminology lists.
+### Overview
+A cheap model that takes a formatted dictionary as input, and pushes word frequencies through either a softmax (multi-class) or sigmoid (multi-label) function, to produce label "probabilities". Useful for bootstrapping classifications with raw terminology lists.
 
-### 2.0 Install
+### Install
 Via pip:
 ```sh
 pip install clear_bow
@@ -15,8 +15,7 @@ cd clear_bow
 pip install .
 ```
 
-### 3.0 Usage
-Instantiate, call:
+### Usage
 ```python
 from clear_bow.classifier import DictionaryClassifier
 
@@ -40,4 +39,4 @@ dc.predict_single("A 10% contribution is not enough for a well balanced super fu
 #  'fund': 0.0878}
 ```
 
-See tests for additinal usage.
+See tests for additional usage.
