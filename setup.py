@@ -11,7 +11,7 @@ REQUIREMENTS = [
 
 setup(
     name="clear_bow",
-    version="0.2",
+    version="0.3",
     url="https://github.com/samhardyhey/clear-bow",
     author="Sam Hardy",
     author_email="samhardyhey@gmail.com",
