@@ -1,8 +1,6 @@
 """Tests for the DictionaryClassifier class."""
 
 import json
-from pathlib import Path
-from typing import Dict, List
 
 import pytest
 
@@ -22,8 +20,7 @@ class TestDictionaryClassifierInitialization:
     def test_init_with_custom_values(self, super_dictionary):
         """Test initialization with custom values."""
         dc = DictionaryClassifier(
-            classifier_type="multi_label",
-            label_dictionary=super_dictionary
+            classifier_type="multi_label", label_dictionary=super_dictionary
         )
         assert dc.classifier_type == "multi_label"
         assert dc.label_dictionary == super_dictionary
@@ -68,8 +65,7 @@ class TestDictionaryClassifierPredictions:
     def test_multi_label_single_simple(self, super_dictionary, example_doc):
         """Test single prediction with multi-label classifier."""
         dc = DictionaryClassifier(
-            classifier_type="multi_label",
-            label_dictionary=super_dictionary
+            classifier_type="multi_label", label_dictionary=super_dictionary
         )
         pred = dc.predict_single(example_doc)
 
@@ -80,8 +76,7 @@ class TestDictionaryClassifierPredictions:
     def test_multi_label_batch_simple(self, super_dictionary, example_docs):
         """Test batch prediction with multi-label classifier."""
         dc = DictionaryClassifier(
-            classifier_type="multi_label",
-            label_dictionary=super_dictionary
+            classifier_type="multi_label", label_dictionary=super_dictionary
         )
         preds = dc.predict_batch(example_docs)
 

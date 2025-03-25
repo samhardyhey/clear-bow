@@ -5,8 +5,8 @@ multi-class or multi-label classification based on word matching and probability
 transformations using softmax or sigmoid functions.
 """
 
-import math
 import json
+import math
 from pathlib import Path
 from typing import Dict, List, Optional, Union
 
@@ -30,7 +30,7 @@ class DictionaryClassifier:
         self,
         model_path: Optional[Union[str, Path]] = None,
         classifier_type: str = "multi_class",
-        label_dictionary: Optional[Dict[str, List[str]]] = None
+        label_dictionary: Optional[Dict[str, List[str]]] = None,
     ) -> None:
         if classifier_type not in self.VALID_CLASSIFIER_TYPES:
             raise ValueError(f"Unsupported classifier type: {classifier_type}")
@@ -145,7 +145,9 @@ class DictionaryClassifier:
         except FileNotFoundError as e:
             raise FileNotFoundError(f"Model files not found in {model_path}") from e
         except json.JSONDecodeError as e:
-            raise json.JSONDecodeError("Invalid JSON in model files", e.doc, e.pos) from e
+            raise json.JSONDecodeError(
+                "Invalid JSON in model files", e.doc, e.pos
+            ) from e
 
     def to_disk(self, model_path: Union[str, Path]) -> None:
         """Save model configuration and label dictionary to disk.
@@ -186,7 +188,9 @@ class DictionaryClassifier:
         pred_dict = self._transform_predict_dict(pred_dict)
         return self._format_predict_dict(pred_dict) if round_preds else pred_dict
 
-    def predict_batch(self, texts: List[str], round_preds: bool = True) -> List[Dict[str, float]]:
+    def predict_batch(
+        self, texts: List[str], round_preds: bool = True
+    ) -> List[Dict[str, float]]:
         """Predict probabilities for a batch of text inputs.
 
         Args:
