@@ -7,12 +7,12 @@ def example_docs():
         "I'm not a Financial expert but Australian super are one of the bigger better options I guess",
         "Mate you get 15% tax on concessional contributions in super.\n\nSo no surprise it adds up to over 15%.",
         "Is the 'income' figure for this before or after tax?",
-        "Message from Covid 19: “don't touch your face, don't touch your super”",
+        "Message from Covid 19: \"don't touch your face, don't touch your super\"",
         "It would be better than having an imaginary jetski that I can't use after the lockdown",
         "Not really unless you will retire fairly soon",
         "That's some other government's problem.",
         "Sun Super all the way",
-        "Message from Covid 19: “don't touch your face, don't touch your super”",
+        "Message from Covid 19: \"don't touch your face, don't touch your super\"",
         "And before Asic politely reminded them they cannot provide financial advice",
         "Personal insurance and health insurance cover different things too.",
         "If you need a house, you need a house. I would suggest trying to top it back up when you can.",
@@ -29,18 +29,18 @@ def example_doc():
 @pytest.fixture(scope="session")
 def super_dictionary():
     return {
-        "regulation": ["asic", "government", "federal", "tax"],
-        "contribution": [
+        "regulation": sorted(["asic", "government", "federal", "tax"]),
+        "contribution": sorted([
             "contribution",
             "concession",
             "personal",
             "after tax",
             "10%",
             "10.5%",
-        ],
-        "covid": ["covid", "lockdown", "downturn", "effect"],
-        "retirement": ["retire", "house", "annuity", "age"],
-        "fund": [
+        ]),
+        "covid": sorted(["covid", "lockdown", "downturn", "effect"]),
+        "retirement": sorted(["retire", "house", "annuity", "age"]),
+        "fund": sorted([
             "unisuper",
             "aus super",
             "australian super",
@@ -48,13 +48,13 @@ def super_dictionary():
             "qsuper",
             "rest",
             "cbus",
-        ],
+        ]),
     }
 
 
 @pytest.fixture(scope="session")
 def not_super_dictionary():
     return {
-        "topically_irrelevant": ["kitchen", "bathroom"],
-        "not_in_the_dataset": ["ocean", "moon", "weeeeeeee"],
+        "topically_irrelevant": sorted(["kitchen", "bathroom"]),
+        "not_in_the_dataset": sorted(["ocean", "moon", "weeeeeeee"]),
     }
