@@ -29,7 +29,6 @@ classifiers = [
 
 # Dependencies should be directly under [project], not under [project.dependencies]
 dependencies = [
-    "numpy>=1.26.0,<3.0.0",
 ]
 
 [project.urls]

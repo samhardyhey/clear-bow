@@ -10,8 +10,6 @@ import json
 from pathlib import Path
 from typing import Dict, List, Optional, Union
 
-import numpy as np
-
 
 class DictionaryClassifier:
     """A dictionary-based text classifier using word matching and probability transformations.
@@ -103,8 +101,11 @@ class DictionaryClassifier:
         Returns:
             List of softmax-transformed values
         """
-        e_x = np.exp(x - np.max(x))
-        return list(e_x / e_x.sum(axis=0))
+        # Subtract max for numerical stability
+        max_x = max(x)
+        exp_x = [math.exp(val - max_x) for val in x]
+        sum_exp = sum(exp_x)
+        return [val / sum_exp for val in exp_x]
 
     def _get_label_word_count(self, text: str) -> Dict[str, int]:
         """Count occurrences of dictionary words in text.

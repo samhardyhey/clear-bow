@@ -5,7 +5,6 @@ from pathlib import Path
 from typing import Dict, List
 
 import pytest
-import numpy as np
 
 from clear_bow.classifier import DictionaryClassifier
 
