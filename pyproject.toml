@@ -3,26 +3,26 @@ requires = ["setuptools>=61.0", "setuptools_scm>=8.0.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "clean-py"
+name = "clear-bow"
 dynamic = ["version"]
-description = "CLI tool for automated Python code cleanup and standardization"
+description = "A dictionary-based text classification library"
 readme = "README.md"
-requires-python = ">=3.6"
+requires-python = ">=3.10"
 license = { file = "LICENSE" }
 authors = [
     { name = "Sam Hardy", email = "samhardyhey@gmail.com" }
 ]
-keywords = ["python", "code-formatting", "jupyter", "notebook", "black", "isort", "autoflake"]
+keywords = ["python", "text-classification", "dictionary-based", "classifier"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Software Development :: Quality Assurance",
 ]

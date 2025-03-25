@@ -11,8 +11,8 @@ setup-local-dev: ## Set up the development environment
 		echo "Creating Python virtual environment..."; \
 		python -m venv venv; \
 	fi
-	@echo "Installing package in development mode..."
-	@./venv/bin/pip install -e .
+	@echo "Installing package and development dependencies..."
+	@./venv/bin/pip install -e ".[dev]"
 	@echo "\nSetup complete! To activate the virtual environment, run:\n\n    source venv/bin/activate\n"
 
 test-local: ## Run pytest for single environment testing
