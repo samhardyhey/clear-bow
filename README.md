@@ -8,16 +8,18 @@ Lightweight dictionary-based classifier that converts word frequencies into labe
 - 🏷️ Multi-label (sigmoid) support
 - 📝 Simple terminology lists
 - 🔢 Probability outputs
+- 💾 Model save/load functionality
+- 🎯 93% test coverage
 
 ## Installation
 ```bash
 # Via pip
-pip install clear_bow
+pip install clear-bow
 
 # Or from source
 git clone https://github.com/samhardyhey/clear-bow
 cd clear-bow
-pip install .
+pip install -e .
 ```
 
 ## Usage
@@ -31,32 +33,96 @@ super_dict = {
     "fund": ["unisuper", "aus super", "sun super", "qsuper"],
 }
 
-# Create and use classifier
+# Create classifier (multi-class by default)
 dc = DictionaryClassifier(label_dictionary=super_dict)
-result = dc.predict_single("A 10% contribution to your super fund")
 
+# Or for multi-label classification
+dc = DictionaryClassifier(
+    label_dictionary=super_dict,
+    classifier_type="multi_label"
+)
+
+# Make predictions
+result = dc.predict_single("A 10% contribution to your super fund")
 # Returns probability distribution across labels
+
+# Batch predictions
+results = dc.predict_batch([
+    "A 10% contribution to your super fund",
+    "Government regulation of super funds"
+])
+
+# Save model to disk
+dc.to_disk("path/to/model")
+
+# Load model from disk
+dc = DictionaryClassifier()
+dc.from_disk("path/to/model")
 ```
 
 ## Development
 ```bash
+# Setup development environment
+make setup-local-dev
+source venv/bin/activate
+
 # Run tests
-pytest
+make test-local
+
+# Run tests with coverage
+make test-coverage
 
 # Multi-environment testing
-tox
+make test-tox
 
 # Build distribution
-python setup.py sdist bdist_wheel
+make dist-bundle-build
+
+# Clean build artifacts
+make clean
 
 # Upload to PyPI
-twine upload dist/*
+make publish
 ```
 
-## Structure
-- 🎯 `clear_bow/` # Core package
-  - `classifier.py` # Main logic
-  - `tests/` # Test suite
-- 📝 `setup.py` # Package config
+## Project Structure
+```
+clear-bow/
+├── src/
+│   └── clear_bow/
+│       ├── __init__.py
+│       └── classifier.py
+├── tests/
+│   ├── conftest.py
+│   └── test_classifier.py
+├── pyproject.toml    # Project configuration
+├── tox.ini          # Multi-environment testing
+└── makefile         # Development commands
+```
 
-*Note: See tests for additional usage examples.*
+## Features in Detail
+
+### Multi-class Classification
+- Uses softmax transformation
+- Outputs sum to 1.0
+- Best for mutually exclusive categories
+
+### Multi-label Classification
+- Uses sigmoid transformation
+- Each label gets independent probability
+- Best for non-exclusive categories
+
+### Error Handling
+- Validates classifier types
+- Handles missing/invalid files
+- Provides informative error messages
+
+### File Operations
+- Save model configuration
+- Save label dictionaries
+- Load models from disk
+
+*Note: See tests for additional usage examples and edge cases.*
+
+## License
+MIT License - See LICENSE file for details.
