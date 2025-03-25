@@ -1,5 +1,7 @@
 # Clear BOW 📚
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Lightweight dictionary-based classifier that converts word frequencies into label probabilities using softmax/sigmoid functions. Perfect for bootstrapping classifications with terminology lists.
 
 ## Features
